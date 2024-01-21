@@ -1,6 +1,6 @@
 # Internship Take Home Assignment - Software Engineer
 
-## How to Run the Code
+## How to Run the Service
 
 1. **Create a Virtual Environment and Activate It**
 
@@ -67,7 +67,7 @@ At the next step, we can build and run the testing image
     docker build -t mobilesam/testing --target testing .
     ```
 
-4. **Run the Container**
+4. **Run the Testing Container**
 
     ```bash
     docker run mobilesam/testing 
