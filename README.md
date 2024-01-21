@@ -28,7 +28,7 @@ The goal of this project is to develop a FastAPI service for deploying the Mobil
 4. **Interact with the Service:**
    To interact with the service, use the endpoint `YOUR_HOST:YOUR_PORT/segment-image/`. Send the image in the request body as a multi-part input with the key as `image_file` and the value as the image file.
 
-   Additionally, you can use `YOUR_HOST:YOUR_PORT/doc/` in your browser to visually test the service.
+   Additionally, you can use `YOUR_HOST:YOUR_PORT/docs/` in your browser to visually test the service.
 
 5. **Install the Test Requirements:**
 
