@@ -33,8 +33,9 @@
     ```bash
     pip install -r test/requirements.txt
     ```
+    (It is suggested different venv to be used for testing.)
 
-. **Run the Test**
+6. **إRun the Test**
 
     Run this code while in the root directory of the project:
 
@@ -43,3 +44,31 @@
     ```
 
 ## How to build Docker image and Run it
+
+1. **Build Docker Image**
+
+    ```bash
+    docker build -t mobilesam/dev --target dev .
+    ```
+
+2. **Run the Container**
+
+    ```bash
+    docker run -p 4000:80 mobilesam/dev
+    ```
+   
+Then the service will be served at 0.0.0.0:4000/segment-image/
+
+At the next step, we can build and run the testing image
+
+3. **Build Docker Testing Image**
+
+    ```bash
+    docker build -t mobilesam/testing --target testing .
+    ```
+
+4. **Run the Container**
+
+    ```bash
+    docker run mobilesam/testing 
+    ```
