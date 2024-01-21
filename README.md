@@ -1,73 +1,73 @@
 # Internship Take Home Assignment - Software Engineer
 
+The goal of this project is to develop a FastAPI service for deploying the MobileSam segmentation model, containerize the service with Docker, and ensure efficient interaction with the model on the CPU.
+
+
 ## How to Run the Service
 
-1. **Create a Virtual Environment and Activate It**
+1. **Create a Virtual Environment and Activate It:**
 
     ```bash
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
-2. **Install the Requirements**
+2. **Install the Requirements:**
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3. **Run the Service**
+3. **Run the Service:**
 
     ```bash
     uvicorn service:app --host YOUR_HOST --port YOUR_PORT --reload
     ```
-    Replace `YOUR_HOST` with the desired host address (e.g., localhost or 0.0.0.0) and `YOUR_PORT` with the desired port number.
+   Replace `YOUR_HOST` with the desired host address (e.g., localhost or 0.0.0.0) and `YOUR_PORT` with the desired port number.
 
-4. **Interact with the service**
-    You can interact with the service by using YOUR_HOST:YOUR_PORT/segment-image/ end-point
-    The image should be send in request body as multi-body input with key as image_file and the vlue of type File and value the image file.
-    
-    The YOUR_HOST:YOUR_PORT/doc/ end point can be used on the browser to check how the service works and also test the service on web visually.
+4. **Interact with the Service:**
+   To interact with the service, use the endpoint `YOUR_HOST:YOUR_PORT/segment-image/`. Send the image in the request body as a multi-part input with the key as `image_file` and the value as the image file.
 
-5. **install the Test Requirements**
+   Additionally, you can use `YOUR_HOST:YOUR_PORT/doc/` in your browser to visually test the service.
+
+5. **Install the Test Requirements:**
 
     ```bash
     pip install -r test/requirements.txt
     ```
-    (It is suggested different venv to be used for testing.)
+   (It is suggested to use a separate virtual environment for testing.)
 
-6. **إRun the Test**
+6. **Run the Tests:**
 
-    Run this code while in the root directory of the project:
+   Run this code while in the root directory of the project:
 
    ```bash
     pytest
     ```
 
-## How to build Docker image and Run it
+## How to Build Docker Image and Run It
 
-1. **Build Docker Image**
+1. **Build Docker Image:**
 
     ```bash
     docker build -t mobilesam/dev --target dev .
     ```
 
-2. **Run the Container**
+2. **Run the Container:**
 
     ```bash
     docker run -p 4000:80 mobilesam/dev
     ```
-   
-Then the service will be served at 0.0.0.0:4000/segment-image/
 
-At the next step, we can build and run the testing image
+The service will be served at `0.0.0.0:4000/segment-image/`. Follow the next steps to build and run the testing image.
 
-3. **Build Docker Testing Image**
+3. **Build Docker Testing Image:**
 
     ```bash
     docker build -t mobilesam/testing --target testing .
     ```
 
-4. **Run the Testing Container**
+4. **Run the Testing Container:**
 
     ```bash
     docker run mobilesam/testing 
