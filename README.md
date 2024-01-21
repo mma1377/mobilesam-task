@@ -1,7 +1,5 @@
 # Internship Take Home Assignment - Software Engineer
 
-This assignment is designed to assess your software engineering skills in the context of integrating and deploying a machine learning model. Though the task involves a machine learning model, the primary focus is on developing and deploying the software application.
-
 ## How to Run the Code
 
 1. **Create a Virtual Environment and Activate It**
@@ -17,37 +15,31 @@ This assignment is designed to assess your software engineering skills in the co
     pip install -r requirements.txt
     ```
 
-3. **Run the Code**
+3. **Run the Service**
 
     ```bash
-    python main.py
+    uvicorn service:app --host YOUR_HOST --port YOUR_PORT --reload
+    ```
+    Replace `YOUR_HOST` with the desired host address (e.g., localhost or 0.0.0.0) and `YOUR_PORT` with the desired port number.
+
+4. **Interact with the service**
+    You can interact with the service by using YOUR_HOST:YOUR_PORT/segment-image/ end-point
+    The image should be send in request body as multi-body input with key as image_file and the vlue of type File and value the image file.
+    
+    The YOUR_HOST:YOUR_PORT/doc/ end point can be used on the browser to check how the service works and also test the service on web visually.
+
+5. **install the Test Requirements**
+
+    ```bash
+    pip install -r test/requirements.txt
     ```
 
-## Task Overview
+. **Run the Test**
 
-**Title:** MobileSam Segmentation Model Service
+    Run this code while in the root directory of the project:
 
-**Expected Time to Complete:** 4 hours
+   ```bash
+    pytest
+    ```
 
-**Objective:** Develop a FastAPI service to deploy the MobileSam segmentation model, containerize the service with Docker, and ensure efficient interaction with the model on the CPU.
-
-**Background:**
-MobileSam is a machine learning model specialized in image segmentation on CPUs. Your task is to create a microservice that allows users to interact with this model via an API. You should find the script `main.py` in this repository, which contains the MobileSam model and a function `segment_everything` that takes an image as input and returns the segmentation result. You can use this function to develop your service. Ignore the default parameters of the function for now.
-
-## Task Description
-
-- **Develop a Microservice:** Use a Python API framework (we suggest FastAPI) to expose the MobileSam segmentation model as a RESTful API.
-  
-- **Model Integration:** Incorporate the MobileSam segmentation model into your service. It should process image inputs and return segmentation results.
-  
-- **API Endpoints:** Create a POST endpoint `/segment-image` to accept an image file, process it through MobileSam, and return the segmentation result.
-  
-- **Documentation:** Provide clear instructions for setting up, running, and interacting with the service in a README.md file.
-
-- **[Bonus]** Docker Familiarity: Containerize your service using Docker.
-
-## Submission
-
-- Submit your code via a GitHub repository link.
-- Include a README file with detailed setup and usage instructions.
-- Provide any necessary scripts or files for testing the API.
+## How to build Docker image and Run it
